@@ -1,5 +1,6 @@
-package moneycalculator;
+package moneycalculator.Model;
 
+import moneycalculator.Model.Currency;
 import java.util.Date;
 
 public class ExchangeRate {

@@ -1,5 +1,6 @@
-package moneycalculator;
+package moneycalculator.Model;
 
+import moneycalculator.Model.Currency;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -34,17 +35,17 @@ public class CurrencySet extends HashSet<Currency>{
         return null;
     }
     
-    public Currency[] search (String token){
-        ArrayList<Currency> list = new ArrayList<>();
-        for (Currency currency: this){
-            if (currency.getCode().equalsIgnoreCase(token)){
-                list.add(currency);
-            }else if (currency.getSymbol().equalsIgnoreCase(token)){
-                list.add(currency);
-            }else if (currency.getName().toLowerCase().contains(token.toLowerCase())){
-                list.add(currency);
+    public Currency search (String token){
+        
+        for (Currency currency: CurrencySet.getInstance()){
+            if (currency.getCode().toLowerCase().equals(token.toLowerCase())){
+                return currency;
+            }else if (currency.getSymbol().toLowerCase().equals(token.toLowerCase())){
+                return currency;
+            }else if (currency.getName().toLowerCase().equals(token.toLowerCase())){
+                return currency;
             }
         }
-        return list.toArray(new Currency[list.size()]);
+        return null;
     }      
 }

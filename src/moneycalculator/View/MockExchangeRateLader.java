@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package moneycalculator;
+package moneycalculator.View;
 
 /**
  *
- * @author usuario
+ * @author cash
  */
-public class CurrencySetLoader {
+public class MockExchangeRateLader {
     
 }
