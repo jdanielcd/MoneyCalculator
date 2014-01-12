@@ -3,6 +3,7 @@ package moneycalculator.UI;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -10,6 +11,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class MainFrame extends JFrame {
+    private JPanel moneyPanel;
+    private CurrencyPanel toCurrencyPanel;
+    private AmountPanel amountPanel;
+    private CurrencyPanel fromCurrencyPanel;
+    
+    
     public MainFrame(){
         setTitle("Money Calculator");
         setMinimumSize(new Dimension(450, 450));
@@ -27,21 +34,28 @@ public class MainFrame extends JFrame {
     private JPanel createMainPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
-        panel.add(createMoneyPanel(), BorderLayout.NORTH);
-        panel.add(createCurrencyPanel(), BorderLayout.NORTH);
+        //panel.add(createMoneyPanel(), BorderLayout.NORTH);
+        this.moneyPanel = createMoneyPanel();
+        panel.add(moneyPanel, BorderLayout.NORTH);
+        //panel.add(createCurrencyPanel(), BorderLayout.NORTH);
+        this.toCurrencyPanel = createCurrencyPanel();
+        panel.add(toCurrencyPanel, BorderLayout.NORTH);
         return panel;
     }
     
     private JPanel createMoneyPanel() {
         JPanel panel = new JPanel();
-        panel.add(new AmountPanel());
-        panel.add(new CurrencyPanel());
+        this.amountPanel = new AmountPanel();
+        panel.add(amountPanel);
+        this.fromCurrencyPanel = new CurrencyPanel();
+        panel.add(fromCurrencyPanel);
+        //panel.add(new CurrencyPanel());
         return panel;
     }
 
-    private JPanel createCurrencyPanel() {
-        JPanel panel = new JPanel();
-        panel.add(new CurrencyPanel());
+    private CurrencyPanel createCurrencyPanel() {
+        CurrencyPanel panel = new CurrencyPanel();
+        //panel.add(new CurrencyPanel());
         return panel;
     }
     
@@ -64,8 +78,9 @@ public class MainFrame extends JFrame {
     }
     
     private void operation(){
-        
-        System.out.println("HolaQUehace");
+        System.out.println("VALOR: "+amountPanel.getAmount());
+        System.out.println("CURRENCY: "+fromCurrencyPanel.getCurrency());
+        System.out.println("CURRENCY: "+toCurrencyPanel.getCurrency());
         
     }
     

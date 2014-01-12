@@ -1,6 +1,8 @@
 package moneycalculator.UI;
 
 import java.awt.PopupMenu;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -8,13 +10,23 @@ import moneycalculator.Model.Currency;
 import moneycalculator.Model.CurrencySet;
 
 class CurrencyPanel extends JPanel {
+    private String currency;
 
     public CurrencyPanel() {
         add(createComboBox());
     }
     
     private JComboBox createComboBox(){
-        JComboBox comboBox = new JComboBox(getCurrencies());
+        final JComboBox comboBox = new JComboBox(getCurrencies());
+        
+        comboBox.addItemListener(new ItemListener() {
+
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() != ItemEvent.SELECTED) return;
+                currency = comboBox.getSelectedItem().toString();
+            }
+        });
         return comboBox;
     }
     
@@ -24,6 +36,10 @@ class CurrencyPanel extends JPanel {
             currencies.add(currency.getCode());
         }
         return currencies.toArray(new String[0]);
+    }
+    
+    public String getCurrency(){
+        return currency;
     }
     
 }
