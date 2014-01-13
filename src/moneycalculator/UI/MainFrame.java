@@ -84,9 +84,6 @@ public class MainFrame extends JFrame {
     }
     
     private void operation(){
-        System.out.println("VALOR: "+amountPanel.getAmount());
-        System.out.println("CURRENCY: "+fromCurrencyPanel.getCurrency());
-        System.out.println("CURRENCY: "+toCurrencyPanel.getCurrency());
         MoneyExchanger moneyExchanger = new MoneyExchanger();
         Double amount = Double.parseDouble(amountPanel.getAmount());
         CurrencySet set = CurrencySet.getInstance();
@@ -96,7 +93,7 @@ public class MainFrame extends JFrame {
         ExchangeRateLoader loader = new MockExchangeRateLoader();
         ExchangeRate rate = loader.load(fromCurrency,toCurrency);
         moneyExchanger.exchange(new Money(amount,fromCurrency), rate);
-        System.out.println(moneyExchanger.getMoney());
+        System.out.println("Conversion result " + moneyExchanger.getMoney());
     }
     
     private JButton exitButton(){
