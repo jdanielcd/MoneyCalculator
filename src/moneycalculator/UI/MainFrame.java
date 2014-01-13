@@ -3,12 +3,18 @@ package moneycalculator.UI;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import moneycalculator.Model.Currency;
+import moneycalculator.Model.CurrencySet;
+import moneycalculator.Model.ExchangeRate;
+import moneycalculator.Model.Money;
+import moneycalculator.Model.MoneyExchanger;
+import moneycalculator.Persistance.ExchangeRateLoader;
+import moneycalculator.Persistance.MockExchangeRateLoader;
 
 public class MainFrame extends JFrame {
     private JPanel moneyPanel;
@@ -81,7 +87,16 @@ public class MainFrame extends JFrame {
         System.out.println("VALOR: "+amountPanel.getAmount());
         System.out.println("CURRENCY: "+fromCurrencyPanel.getCurrency());
         System.out.println("CURRENCY: "+toCurrencyPanel.getCurrency());
-        
+        MoneyExchanger moneyExchanger = new MoneyExchanger();
+        Double amount = Double.parseDouble(amountPanel.getAmount());
+        CurrencySet set = CurrencySet.getInstance();
+        Currency fromCurrency = set.get(fromCurrencyPanel.getCurrency());
+        Currency toCurrency = set.get(toCurrencyPanel.getCurrency());
+        Money money = new Money(amount,fromCurrency);
+        ExchangeRateLoader loader = new MockExchangeRateLoader();
+        ExchangeRate rate = loader.load(fromCurrency,toCurrency);
+        moneyExchanger.exchange(new Money(amount,fromCurrency), rate);
+        System.out.println(moneyExchanger.getMoney());
     }
     
     private JButton exitButton(){
