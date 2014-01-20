@@ -10,7 +10,7 @@ import moneycalculator.Model.Currency;
 import moneycalculator.Model.CurrencySet;
 
 class CurrencyPanel extends JPanel {
-    private String currency;
+    private String currency = "HKD";
 
     public CurrencyPanel() {
         add(createComboBox());

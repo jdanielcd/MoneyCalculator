@@ -88,12 +88,13 @@ public class MainFrame extends JFrame {
         Double amount = Double.parseDouble(amountPanel.getAmount());
         CurrencySet set = CurrencySet.getInstance();
         Currency fromCurrency = set.get(fromCurrencyPanel.getCurrency());
+        //System.out.println(fromCurrencyPanel.getCurrency());
         Currency toCurrency = set.get(toCurrencyPanel.getCurrency());
         Money money = new Money(amount,fromCurrency);
         ExchangeRateLoader loader = new MockExchangeRateLoader();
         ExchangeRate rate = loader.load(fromCurrency,toCurrency);
         moneyExchanger.exchange(new Money(amount,fromCurrency), rate);
-        System.out.println("Conversion result " + moneyExchanger.getMoney());
+        System.out.println("Conversion result " + moneyExchanger.getMoney().getAmount() + " "+ moneyExchanger.getMoney().getCurrency().getName());
     }
     
     private JButton exitButton(){

@@ -15,6 +15,10 @@ public class ExchangeRate {
         this.to = to;
         this.rate = rate;
     }
+    
+    public ExchangeRate(Currency from, Currency to, double rate) {
+        this(new Date(),from,to,rate);
+    }
 
     public Date getDate() {
         return date;
