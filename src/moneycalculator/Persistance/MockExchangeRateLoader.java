@@ -54,7 +54,6 @@ public class MockExchangeRateLoader implements ExchangeRateLoader{
             rate /= exchangeRate.getRate();
             break;
         }
-        else System.out.println("Buscando2...");
     }
     
     return new ExchangeRate (from,to,rate);
