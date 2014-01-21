@@ -1,4 +1,11 @@
 package moneycalculator;
+/*
+    Authors:
+    Hector Garbisu Arocha.
+    David Díaz González.
+    Juan Daniel Cabrera Déniz.
+    Adrián Mujica González.
+*/
 
 import moneycalculator.Persistance.MockCurrencySetLoader;
 import moneycalculator.View.ConsoleExchanger;

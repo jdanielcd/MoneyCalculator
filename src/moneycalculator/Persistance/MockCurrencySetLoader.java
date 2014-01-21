@@ -17,7 +17,7 @@ public class MockCurrencySetLoader implements CurrencySetLoader {
         currencySet.add(new Currency("CNY", "Yuan", "¥"));
         currencySet.add(new Currency("CZK", "Corona Checa", "Kc"));
         currencySet.add(new Currency("DKK", "Corona Danesa", "Kr"));
-        currencySet.add(new Currency("EUR", "Euro", "€"));
+        currencySet.add(new Currency("EUR", "Euros", "€"));
         currencySet.add(new Currency("GBP", "Libra Esterlina", "£"));
         currencySet.add(new Currency("HKD", "Dolar de Hong Kong", "HK$"));
         currencySet.add(new Currency("HUF", "Forinto hungaro", "Ft"));
