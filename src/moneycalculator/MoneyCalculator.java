@@ -4,7 +4,7 @@ package moneycalculator;
     Hector Garbisu Arocha.
     David Díaz González.
     Juan Daniel Cabrera Déniz.
-    Adrián Mujica González.
+    Adrián Mujica González. 
 */
 
 import moneycalculator.Persistance.MockCurrencySetLoader;
